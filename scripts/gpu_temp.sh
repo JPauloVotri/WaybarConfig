@@ -1,6 +1,6 @@
 #!/bin/bash
 
-LOCAL_CONFIG="$HOME/.config/waybar/scripts/local-hardware.sh"
+LOCAL_CONFIG="$HOME/.config/waybar/scripts/local_hardware.sh"
 [ -f "$LOCAL_CONFIG" ] && source "$LOCAL_CONFIG"
 
 read_temp() {
@@ -14,7 +14,7 @@ read_temp() {
 
 gpu_temp=$(read_temp "$GPU_PATH")
 
-if [ -z "$cpu_temp" ]; then
+if [ -z "$gpu_temp" ]; then
     echo ""
     exit 1
 fi

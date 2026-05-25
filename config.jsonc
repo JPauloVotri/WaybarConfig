@@ -82,13 +82,13 @@
     "format": "<span size='15000'>󰌌</span>"
   },
   "custom/temp#cpu": {
-    "exec": "~/.config/waybar/scripts/cpu-temp.sh",
+    "exec": "~/.config/waybar/scripts/cpu_temp.sh",
     "interval": 2,
     "format": " {}󰔄",
     "return-type": "json"
   },
   "custom/temp#gpu": {
-    "exec": "~/.config/waybar/scripts/gpu-temp.sh",
+    "exec": "~/.config/waybar/scripts/gpu_temp.sh",
     "interval": 2,
     "format": " {}󰔄",
     "return-type": "json"

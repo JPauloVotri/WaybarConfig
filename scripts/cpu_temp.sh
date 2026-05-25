@@ -1,6 +1,6 @@
 #!/bin/bash
 
-LOCAL_CONFIG="$HOME/.config/waybar/scripts/local-hardware.sh"
+LOCAL_CONFIG="$HOME/.config/waybar/scripts/local_hardware.sh"
 [ -f "$LOCAL_CONFIG" ] && source "$LOCAL_CONFIG"
 
 read_temp() {
