@@ -1,0 +1,30 @@
+#!/usr/bin/env bash
+
+config="$HOME/.config/wofi/style.css"
+
+actions=$(echo -e "  Lock\n  Shutdown\n  Reboot\n  Suspend\n  Hibernate\n󰞘  Logout")
+
+# Display logout menu
+selected_option=$(echo -e "$actions" | wofi --show dmenu --style "${config}" || pkill -x wofi)
+
+# Perform actions based on the selected option
+case "$selected_option" in
+*Lock)
+  loginctl lock-session
+  ;;
+*Shutdown)
+  systemctl poweroff
+  ;;
+*Reboot)
+  systemctl reboot
+  ;;
+*Suspend)
+  systemctl suspend
+  ;;
+*Hibernate)
+  systemctl hibernate
+  ;;
+*Logout)
+  loginctl kill-session "$XDG_SESSION_ID"
+  ;;
+esac

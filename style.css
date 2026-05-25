@@ -1,0 +1,295 @@
+@import "mocha.css";
+
+@define-color primary             @mauve;
+@define-color primary-hover       @rosewater;
+@define-color secondary           @blue;
+@define-color background          @base;
+@define-color background-muted    @mantle;
+@define-color background-elevated @surface0;
+@define-color foreground          @text;
+@define-color foreground-inverse  @surface0;
+@define-color foreground-muted    @overlay0;
+@define-color foreground-disabled @surface1;
+@define-color border              @surface2;
+@define-color critical            @red;
+@define-color warning             @yellow;
+
+@keyframes critical {
+    to {
+        background-color: @critical;
+        color: @foreground-inverse;
+    }
+}
+
+@keyframes blink-update {
+    to {
+        background-color: @blue;
+        color: @foreground-inverse;
+    }
+}
+
+@keyframes low-battery {
+    to {
+        background-color: @critical;
+        color: @foreground-inverse;
+    }
+}
+
+* {
+    font-family: "Adwaita Sans, Ubuntu Nerd Font Propo, monospace";
+    font-size: 0.8rem;
+    font-weight: bold;
+    border: none;
+    border-radius: 0;
+    min-height: 0;
+    margin: 0;
+    padding: 0;
+    box-shadow: none;
+    text-shadow: none;
+}
+
+#waybar {
+    background-color: @background;
+    color: @foreground;
+    transition-property: background-color;
+    transition-duration: 0.1s;
+    border-top: 0.4em solid @background-elevated;
+}
+
+tooltip {
+    background-color: @background-muted;
+    color: @foreground;
+    border: 0.2em solid @border;
+    border-radius: 0.5em;
+}
+
+#tray menu {
+    background-color: @background;
+    color: @foreground;
+    border: 0.2em solid @background-elevated;
+    border-radius: 0.5em;
+}
+
+#tray menu menuitem {
+    padding: 0.5em 0.25em;
+}
+
+#tray menu menuitem:hover {
+    background-color: @background-elevated;
+    color: @primary;
+    border-radius: 0.5em;
+}
+
+#tray menu menuitem:disabled {
+    color: @foreground-disabled;
+}
+
+#tray menu separator {
+    margin: 0.2em 0em;
+    padding: 0.1em;
+    background-color: @background-elevated;
+}
+
+#custom-bar {
+    font-family: "Ubuntu Nerd Font Propo";
+    font-size: 2em;
+    color: @background-elevated;
+}
+
+#workspaces,
+#window,
+#mpris,
+#custom-keyd-layer,
+#custom-temp,
+#cpu,
+#memory,
+#custom-disk,
+#pulseaudio,
+#pulseaudio-slider,
+#clock,
+#custom-menu,
+#tray,
+#custom-updates,
+#idle_inhibitor,
+#custom-notification,
+#battery,
+#custom-power,
+#networkmod,
+#custom-sep {
+    background-color: @background-elevated;
+    padding: 0 0.7em;
+}
+
+#waybar.empty #window {
+    padding: 0;
+}
+
+#workspaces {
+    padding-left: 0;
+}
+
+#workspaces button {
+    color: @foreground;
+    padding: 0 0.7em;
+    border-top: 0.2em solid transparent;
+    border-bottom: 0.2em solid transparent;
+}
+
+#workspaces button.empty {
+    color: @foreground-muted;
+}
+
+#workspaces button.urgent {
+    color: @red;
+}
+
+#workspaces button:hover {
+    color: @primary-hover;
+    background: transparent;
+    background: rgba(255, 255, 255, 0.1);
+    border-bottom: 0.2em solid;
+}
+
+#workspaces button.active {
+    color: @primary;
+    border-bottom: 0.2em solid;
+}
+
+#mpris.playing {
+    color: @green;
+}
+
+#mpris.paused {
+    color: @foreground-muted;
+}
+
+#custom-temp {
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+
+#custom-temp.cpu {
+    color: @maroon;
+}
+
+#custom-temp.gpu {
+    color: @teal;
+}
+
+#custom-temp.critical {
+    animation-name: critical;
+    animation-duration: 1s;
+}
+
+#custom-temp.warning {
+    background-color: @warning;
+    color: @foreground-inverse;
+}
+
+#cpu {
+    color: @maroon;
+}
+
+#memory {
+    color: @yellow;
+}
+
+#custom-disk {
+    color: @lavender;
+}
+
+#pulseaudio {
+    color: @green;
+}
+
+#pulseaudio.muted {
+    color: @foreground-muted;
+}
+
+#pulseaudio-slider trough {
+    min-width: 8em;
+    min-height: 0.8em;
+    border-radius: 0.5em;
+    background-color: @background;
+}
+
+#pulseaudio-slider highlight {
+    border-radius: 0.5em;
+    background-color: @green;
+}
+
+#clock.simple {
+    color: @blue;
+}
+
+#custom-updates {
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+    color: @secondary;
+}
+
+#custom-updates.pending-updates {
+    animation-name: blink-update;
+    animation-duration: 3s;
+}
+
+#idle_inhibitor {
+    color: @peach;
+}
+
+#idle_inhibitor.activated {
+    background-color: @peach;
+    color: @foreground-inverse;
+}
+
+#custom-notification.none {
+    color: @lavender;
+}
+
+#custom-notification.notification {
+    color: @green;
+}
+
+#custom-notification.dnd-none {
+    color: @yellow;
+}
+
+#custom-notification.dnd-notification {
+    color: @red;
+}
+
+#battery {
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+    color: @foreground;
+}
+
+#battery.warning {
+    color: @warning;
+}
+
+#battery.critical {
+    color: @critical;
+}
+
+#battery.critical:not(.charging):not(.plugged) {
+    animation-name: low-battery;
+    animation-duration: .8s;
+}
+
+#battery.full,
+#battery.plugged,
+#battery.charging {
+    color: @green;
+}
+
+#custom-power {
+    color: @red;
+}
+
+.foreground {
+    color: @foreground;
+}
