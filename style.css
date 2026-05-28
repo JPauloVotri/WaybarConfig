@@ -211,12 +211,12 @@ tooltip {
     min-width: 8em;
     min-height: 0.8em;
     border-radius: 0.5em;
-    background-color: @background;
+    background: @background;
 }
 
 #pulseaudio-slider highlight {
     border-radius: 0.5em;
-    background-color: @green;
+    background: @green;
 }
 
 #clock.simple {
