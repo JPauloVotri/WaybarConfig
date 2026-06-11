@@ -6,7 +6,13 @@
     "hyprland/window",
     "custom/bar#right"
   ],
-  "modules-center": ["custom/bar#left", "mpris", "custom/bar#right"],
+  "modules-center": [
+    "custom/bar#left",
+    "keyboard-state#caps",
+    "mpris",
+    "keyboard-state#num",
+    "custom/bar#right"
+  ],
   "modules-right": [
     "custom/bar#left",
     "custom/temp#cpu",
@@ -179,6 +185,23 @@
       "transition-left-to-right": false
     },
     "modules": ["pulseaudio", "pulseaudio/slider"]
+  },
+  "keyboard-state#caps": {
+    "capslock": true,
+    "format": "<span size='12000'>{icon}</span>",
+    "format-icons": {
+        "locked": "󰯬",
+        "unlocked": "󰯭"
+    },
+    "binding-keys": [29]
+  },
+  "keyboard-state#num": {
+    "numlock": true,
+    "format": "<span size='12000'>{icon}</span>",
+    "format-icons": {
+        "locked": "󰲠",
+        "unlocked": "󰲡"
+    }
   },
   "clock": {
     "format": "{:L%d %b %Hh%M}",

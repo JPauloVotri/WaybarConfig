@@ -106,6 +106,7 @@ tooltip {
 #custom-disk,
 #pulseaudio,
 #pulseaudio-slider,
+#keyboard-state,
 #clock,
 #custom-menu,
 #tray,
@@ -292,4 +293,17 @@ tooltip {
 
 .foreground {
     color: @foreground;
+}
+
+#keyboard-state {
+    color: @foreground-muted;
+    font-family: "Ubuntu Nerd Font Propo";
+}
+
+#keyboard-state .capslock.locked {
+    color: @green;
+}
+
+#keyboard-state .numlock.locked {
+    color: @blue;
 }
