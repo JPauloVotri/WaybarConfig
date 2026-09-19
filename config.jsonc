@@ -8,9 +8,7 @@
   ],
   "modules-center": [
     "custom/bar#left",
-    "keyboard-state#caps",
     "mpris",
-    "keyboard-state#num",
     "custom/bar#right"
   ],
   "modules-right": [
