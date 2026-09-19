@@ -37,13 +37,6 @@
   },
   "hyprland/workspaces": {
     "format": "{icon}",
-    "format-icons": {
-      "1": "",
-      "2": "",
-      "3": "",
-      "4": "󰇮",
-      "5": ""
-    },
     "all-outputs": true,
     "persistent-workspaces": {
       "*": [1, 2, 3, 4, 5]
