@@ -97,7 +97,7 @@ window#waybar.empty #window {
 .modules-left,
 .modules-center,
 .modules-right {
-    background-color: alpha(@background, .5);
+    background-color: alpha(@background, .7);
     border-radius: 1em;
     padding: 0 .2em;
     margin: 0 16px;
