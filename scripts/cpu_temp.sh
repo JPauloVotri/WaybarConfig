@@ -6,7 +6,7 @@ LOCAL_CONFIG="$HOME/.config/waybar/scripts/local_hardware.sh"
 read_temp() {
     local path=$1
     if [ -n "$path" ] && [ -f "$path" ]; then
-        echo $(($(cat "$path") / 1000))
+        echo $(( $(< "$path") / 1000 ))
     else
         echo ""
     fi
@@ -19,11 +19,14 @@ if [ -z "$cpu_temp" ]; then
     exit 1
 fi
 
-class=""
-if [ $cpu_temp -gt 90 ]; then
-  class="critical"
-elif [ $cpu_temp -gt 80 ]; then
-  class="warning"
+if [ "$cpu_temp" -le 50 ]; then
+    state="low"
+elif [ "$cpu_temp" -le 70 ]; then
+    state="normal"
+elif [ "$cpu_temp" -le 85 ]; then
+    state="warning"
+else
+    state="critical"
 fi
 
-echo "{\"text\": \"$cpu_temp\", \"class\": \"$class\", \"tooltip\": \"CPU: $cpu_temp°C (Tctl)\"}"
+echo "{\"text\": \"$cpu_temp\", \"class\": \"$state\", \"alt\": \"$state\", \"tooltip\": \"CPU: $cpu_temp°C (Tctl)\", \"percentage\": $cpu_temp}"

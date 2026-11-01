@@ -1,0 +1,270 @@
+@import "mocha.css";
+
+@define-color primary             @mauve;
+@define-color primary-hover       @rosewater;
+@define-color secondary           @blue;
+@define-color background          @base;
+@define-color background-muted    @mantle;
+@define-color background-elevated @surface0;
+@define-color foreground          @text;
+@define-color foreground-inverse  @surface0;
+@define-color foreground-muted    @overlay0;
+@define-color foreground-disabled @surface1;
+@define-color border              @surface2;
+@define-color critical            @red;
+@define-color warning             @yellow;
+
+@keyframes critical {
+    to {
+        background-color: @critical;
+        color: @foreground-inverse;
+    }
+}
+
+@keyframes blink-update {
+    to {
+        background-color: @blue;
+        color: @foreground-inverse;
+    }
+}
+
+@keyframes low-battery {
+    to {
+        background-color: @critical;
+        color: @foreground-inverse;
+    }
+}
+
+* {
+    all: unset;
+    font-family: "Red Hat Display", "Adwaita Sans", "Ubuntu Nerd Font Propo", monospace;
+    font-size: .8rem;
+    font-weight: bold;
+}
+
+tooltip {
+    background-color: @background-muted;
+    color: @foreground;
+    border: .2em solid @border;
+    border-radius: .5em;
+}
+
+#tray menu {
+    background-color: @background;
+    color: @foreground;
+    border: .2em solid @background-elevated;
+    border-radius: .5em;
+}
+
+#tray menu menuitem {
+    padding: .5em 1em;
+}
+
+#tray menu menuitem:hover {
+    background-color: @background-elevated;
+    color: @primary;
+    border-radius: 0;
+}
+
+#tray menu menuitem:hover:first-child {
+    border-top-left-radius: .5em;
+    border-top-right-radius: .5em;
+}
+
+#tray menu menuitem:hover:last-child {
+    border-bottom-left-radius: .5em;
+    border-bottom-right-radius: .5em;
+}
+
+#tray menu menuitem:disabled {
+    color: @foreground-disabled;
+}
+
+#tray menu separator {
+    margin: .2em 0;
+    padding: .1em;
+    background-color: @background-elevated;
+}
+
+#waybar {
+    color: @foreground;
+}
+
+window#waybar.empty #window {
+    all: unset;
+}
+
+.modules-left,
+.modules-center,
+.modules-right {
+    background-color: alpha(@background, .5);
+    border-radius: 1em;
+    padding: 0 .2em;
+    margin: 0 16px;
+}
+
+.module {
+    padding: .2em .4em;
+    border-radius: .3em;
+}
+
+#workspaces {
+    padding-top: 0;
+    padding-bottom: 0;
+}
+
+#workspaces button {
+    min-width: 1.4em;
+    border-radius: .3em;
+}
+
+#workspaces button.empty {
+    color: @foreground-muted;
+}
+
+#workspaces button.urgent {
+    color: @red;
+}
+
+#workspaces button:hover,
+#workspaces button.active {
+    color: @background;
+    transition: all 150ms ease-in-out;
+    min-width: 1.8em;
+}
+
+#workspaces button:hover {
+    background-color: @primary-hover;
+}
+
+#workspaces button.active {
+    background-color: @primary;
+}
+
+#mpris.playing {
+    color: @green;
+}
+
+#mpris.paused {
+    color: @foreground-muted;
+}
+
+#pulseaudio {
+    color: @green;
+}
+
+#pulseaudio.muted {
+    color: @foreground-muted;
+}
+
+#pulseaudio-slider trough {
+    min-width: 4em;
+    min-height: .6em;
+    border-radius: .5em;
+    background: @background;
+    border: .1em solid @green;
+}
+
+#pulseaudio-slider highlight {
+    border-radius: .5em;
+    background: @green;
+}
+
+#battery,
+#custom-temp,
+#custom-updates {
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+
+#battery {
+    color: @foreground;
+}
+
+#battery.warning {
+    color: @warning;
+}
+
+#battery.critical {
+    color: @critical;
+}
+
+#battery.critical:not(.charging):not(.plugged) {
+    animation-name: low-battery;
+    animation-duration: .8s;
+}
+
+#battery.full,
+#battery.plugged,
+#battery.charging {
+    color: @green;
+}
+
+#bluetooth {
+    color: @blue;
+}
+
+#custom-temp.cpu {
+    color: @maroon;
+}
+
+#custom-temp.gpu {
+    color: @teal;
+}
+
+#custom-temp.critical {
+    animation-name: critical;
+    animation-duration: 1s;
+}
+
+#custom-temp.warning {
+    background-color: @warning;
+    color: @foreground-inverse;
+}
+
+#cpu {
+    color: @maroon;
+}
+
+#memory {
+    color: @yellow;
+}
+
+#custom-disk {
+    color: @lavender;
+}
+
+#custom-menu {
+    color: @blue;
+}
+
+#custom-power {
+    color: @red;
+}
+
+#custom-screenshot {
+    color: @lavender;
+}
+
+#custom-updates {
+    color: @secondary;
+}
+
+#custom-updates.pending-updates {
+    animation-name: blink-update;
+    animation-duration: 3s;
+}
+
+#idle_inhibitor {
+    color: @peach;
+}
+
+#idle_inhibitor.activated {
+    background-color: @peach;
+    color: @foreground-inverse;
+}
+
+#power-profiles-daemon {
+    color: @yellow;
+}

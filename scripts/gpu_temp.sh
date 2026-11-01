@@ -6,7 +6,7 @@ LOCAL_CONFIG="$HOME/.config/waybar/scripts/local_hardware.sh"
 read_temp() {
     local path=$1
     if [ -n "$path" ] && [ -f "$path" ]; then
-        echo $(($(cat "$path") / 1000))
+        echo $(( $(< "$path") / 1000 ))
     else
         echo ""
     fi
@@ -19,11 +19,14 @@ if [ -z "$gpu_temp" ]; then
     exit 1
 fi
 
-class=""
-if [ $gpu_temp -gt 100 ]; then
-  class="critical"
-elif [ $gpu_temp -gt 90 ]; then
-  class="warning"
+if [ "$gpu_temp" -le 55 ]; then
+    state="low"
+elif [ "$gpu_temp" -le 75 ]; then
+    state="normal"
+elif [ "$gpu_temp" -le 90 ]; then
+    state="warning"
+else
+    state="critical"
 fi
 
-echo "{\"text\": \"$gpu_temp\", \"class\": \"$class\", \"tooltip\": \"GPU: $gpu_temp°C (Hot Spot)\"}"
+echo "{\"text\": \"$gpu_temp\", \"class\": \"$state\", \"alt\": \"$state\", \"tooltip\": \"GPU: $gpu_temp°C (Hot Spot)\", \"percentage\": $gpu_temp}"
