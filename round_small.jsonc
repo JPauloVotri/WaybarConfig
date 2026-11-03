@@ -268,6 +268,7 @@
   "custom/updates": {
     "format": "{icon}{0}",
     "return-type": "json",
+    "hide-empty-text": true,
     "format-icons": {
       "pending-updates": " ",
       "updated": ""
